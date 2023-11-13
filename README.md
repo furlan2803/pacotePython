@@ -34,8 +34,6 @@ Este é um breve guia sobre os arquivos contidos neste pacote Python.
 
 - **setup.py**: Script de configuração para instalar o pacote.
 
-- **temp.csv**: Arquivo temporário.
-
 - **tests**: Diretório contendo testes para o pacote.
 
   - **test_lib.py**: Arquivo de teste do módulo.
@@ -44,9 +42,7 @@ Este é um breve guia sobre os arquivos contidos neste pacote Python.
 
 ## 1.2 Executando o Pacote
 
-Antes de executar os arquivos, certifique-se de ter instalado todas as dependências do projeto. 
-
-### 1.2.1 Notebooks Jupyter
+**Observação** : Antes de executar os arquivos, certifique-se de ter instalado todas as dependências do projeto. 
 
 Para executar os processos principais do projeto, utilize os seguintes notebooks Jupyter:
 
@@ -54,7 +50,28 @@ Para executar os processos principais do projeto, utilize os seguintes notebooks
 
 - **send_s3.ipynb**: Utilize este notebook para o envio dos dados processados para o Amazon S3. Abra o notebook e execute suas células para encaminhar os arquivos CSV aos buckets da AWS S3.
 
-### 1.2.2 Testes
+# 2. Testes Unitários
+
+A seguir, estão documentados os testes unitários para as funções contidas no arquivo `test_lib.py`, na classe `TesteObterNomesArquivos`.
+
+**Método setUp** : 
+Este método é executado antes de cada teste. Ele cria um diretório temporário e um arquivo CSV populado dentro dele.
+
+**Método tearDown** : 
+Este método é executado após cada teste. Ele remove o diretório temporário criado durante o teste.
+
+**Método criar_arquivo_csv_populado** : 
+Este método cria um arquivo CSV populado com dados fictícios. O caminho do arquivo criado é retornado.
+
+**Método teste_obter_nome_arquivo_funcionando** : Este teste verifica se a função inteli.obter_nomes_arquivos retorna resultados adequados para o diretório temporário criado. Imprime os resultados ou falha se houver problemas.
+
+**Método teste_ler_arquivo_csv_funcionando** : 
+Este teste verifica se a função `ler_arquivo_csv` pode ler corretamente o arquivo CSV criado durante a configuração. Falha se o DataFrame resultante estiver vazio.
+
+**Método teste_tratar_e_salvar_arquivo** : 
+Este teste verifica se a função `tratar_e_salvar_arquivo` pode processar e salvar corretamente o arquivo CSV criado durante a configuração. Imprime os resultados.
+
+## 2.1 Execução dos Testes
 
 A pasta "tests" contém testes para garantir a integridade do pacote. Para executar os testes, recomenda-se o uso do Windows Subsystem for Linux (WLS) ou de um terminal Linux. Utilize o seguinte comando no terminal:
 
@@ -62,6 +79,6 @@ A pasta "tests" contém testes para garantir a integridade do pacote. Para execu
 pytest tests
 ```
 
-## 1.3 Licença
+# 3. Licença
 
 Este pacote é distribuído sob a licença [Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
